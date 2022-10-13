@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/DetailPage.dart';
-import 'package:flutter_application_2/PremiereLeagueModel.dart';
+import 'package:Soccers/API/PremiereLeagueModel.dart';
+import 'package:Soccers/Screen_page/DetailPage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -43,9 +44,11 @@ class _ListAllFootbalState extends State<ListAllFootbal> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
+        child: Card(
           child: isloaded == true
               ? ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
                   itemCount: premiereLeagueModel!.teams!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
@@ -72,10 +75,12 @@ class _ListAllFootbalState extends State<ListAllFootbal> {
                                 children: [
                                   Text(premiereLeagueModel!
                                       .teams![index].strTeam
-                                      .toString()),
+                                      .toString(),
+                                      style: GoogleFonts.robotoMono(),),
                                   Text(premiereLeagueModel!
                                       .teams![index].strStadium
-                                      .toString()),
+                                      .toString(),
+                                      style: GoogleFonts.robotoMono(),),
                                 ],
                               )
                             ],

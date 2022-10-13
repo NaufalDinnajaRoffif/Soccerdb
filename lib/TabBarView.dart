@@ -1,9 +1,6 @@
+import 'package:Soccers/FavPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/CardMatchView.dart';
-import 'package:flutter_application_2/ListAllFootball.dart';
-import 'package:flutter_application_2/Match.dart';
-
-
+import 'package:Soccers/Tabs/ListAllFootball.dart';
 
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
@@ -18,9 +15,8 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin{
   int _selectedIndex = 0;
 
   List<Widget> list = [
-    Tab(text: "Teams",),
-    Tab(text: "Match",),
-    Tab(text: "Eat & Drink",),
+    Tab(icon: ImageIcon(AssetImage('liga_inggris.png'))),
+    Tab(icon: Icon(Icons.favorite)),
   ];
 
   @override
@@ -42,7 +38,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin{
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.teal,
+          backgroundColor: Color(0xFF0B0486),
           bottom: TabBar(
             onTap: (index) {
               // Should not used it as it only called when tab options are clicked,
@@ -51,13 +47,15 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin{
             controller: _controller,
             tabs: list,
           ),
-          title: Text('Soccer'),
+          title: Align(
+              alignment: Alignment.center,
+              child: Text('Soccer',)),
         ),
         body: TabBarView(
           controller: _controller,
           children: [
             ListAllFootbal(),
-           dashboard(),
+            favPage(),
             Center(
                 child: Text(
                   _selectedIndex.toString(),
